@@ -30,3 +30,25 @@ To resolve the 502 Bad Gateway error, the port configuration in the `nginx.conf`
 
 This fix ensures that Nginx correctly forwards requests to the running Node.js application, resolving the 502 Bad Gateway error.
 
+## How to Prevent This in Production
+
+To avoid similar issues in production, configuration files should not use hardcoded port numbers. Instead, ports should be loaded dynamically using environment variables. This makes the setup more flexible and less error-prone, especially when deploying to different environments.
+
+**Recommended approach:**
+- Use environment variables to define the application port.
+- Template your configuration files (e.g., `nginx.conf.template`) with placeholders for ports.
+- At container startup, use a tool like `envsubst` to substitute environment variables into the config file:
+  ```sh
+  envsubst < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
+  ```
+- Start Nginx after the config is generated.
+
+
+This approach ensures that your configuration always matches the actual runtime environment, reducing the risk of misconfiguration and 502 Bad Gateway errors. Also, environment variable files (like `.env`) can be added separately, and Docker Compose can reference those values for even more flexible configuration.
+
+> **Note:**  
+> There is an example of the recommended approach for production in this repo.  
+> Check out these files:
+> - `nginx.conf.template` (uses env variables for dynamic config)
+> - `docker-compose.env.yml` (compose file that contains ENV definitions and references them into nginx with new entrypoint)
+
