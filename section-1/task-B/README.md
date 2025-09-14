@@ -46,3 +46,31 @@ flask run
 
 By default, the app will be available at `http://127.0.0.1:5000/`. You can access it from your web browser.
 
+
+# Running with Docker Compose
+
+You can run the application using Docker Compose, which will handle building the Docker image and starting the container for you.
+
+## Build and Run
+
+To build the Docker image and start the application, run:
+
+```bash
+docker compose up --build
+```
+
+This command will:
+- Build the Docker image as defined in the `Dockerfile`.
+- Start the container as defined in `docker-compose.yml`.
+- The app will be available at `http://127.0.0.1:5000/`.
+
+## Stopping the Containers
+
+To stop the running containers, press `Ctrl+C` in the terminal where Docker Compose is running, or run:
+
+```bash
+docker compose down
+```
+
+This will stop and remove the containers created by Docker Compose.
+
