@@ -5,6 +5,9 @@ It demonstrates basic usage of Flask and can be run either with Docker Compose o
 
 based on [Flask - A Minimal Application](https://flask.palletsprojects.com/en/stable/quickstart/#a-minimal-application)
 
+> **Note:**  
+> An example log output after running the app with Docker Compose can be found in the `cli.log` file.
+
 # Running with Docker Compose
 
 **Requirements:**  
@@ -37,7 +40,6 @@ docker compose down
 This will stop and remove the containers created by Docker Compose.
 
 # Running using python venv
-
 
 ## Python Installation
 

@@ -1,0 +1,41 @@
+potociarm@NB1743:~/devops-academy-assignment/section-1/task-B$ docker compose build
+Compose can now delegate builds to bake for better performance.
+ To do so, set COMPOSE_BAKE=true.
+[+] Building 0.7s (11/11) FINISHED                                                                                                                docker:default
+ => [flask internal] load build definition from Dockerfile                                                                                                  0.0s
+ => => transferring dockerfile: 506B                                                                                                                        0.0s
+ => [flask internal] load metadata for docker.io/library/python:3.13.7-slim                                                                                 0.4s
+ => [flask internal] load .dockerignore                                                                                                                     0.0s
+ => => transferring context: 2B                                                                                                                             0.0s
+ => [flask 1/5] FROM docker.io/library/python:3.13.7-slim@sha256:58c30f5bfaa718b5803a53393190b9c68bd517c44c6c94c1b6c8c172bcfad040                           0.0s
+ => [flask internal] load build context                                                                                                                     0.0s
+ => => transferring context: 371B                                                                                                                           0.0s
+ => CACHED [flask 2/5] WORKDIR /app                                                                                                                         0.0s
+ => CACHED [flask 3/5] COPY requirements.txt .                                                                                                              0.0s
+ => CACHED [flask 4/5] RUN pip install --no-cache-dir -r requirements.txt                                                                                   0.0s
+ => [flask 5/5] COPY app/ .                                                                                                                                 0.0s
+ => [flask] exporting to image                                                                                                                              0.1s
+ => => exporting layers                                                                                                                                     0.0s
+ => => writing image sha256:3af00e752c626c076a7e9778af5de92b47c463b600a67ac08bbfd0722626e05a                                                                0.0s
+ => => naming to docker.io/library/task-b-flask                                                                                                             0.0s
+ => [flask] resolving provenance for metadata file                                                                                                          0.0s
+[+] Building 1/1
+ ✔ flask  Built                                                                                                                                             0.0s 
+potociarm@NB1743:~/devops-academy-assignment/section-1/task-B$ docker compose up
+[+] Running 1/1
+ ✔ Container task-b-flask-1  Recreated                                                                                                                      0.1s 
+Attaching to flask-1
+flask-1  |  * Serving Flask app 'app'
+flask-1  |  * Debug mode: off
+flask-1  | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+flask-1  |  * Running on all addresses (0.0.0.0)
+flask-1  |  * Running on http://127.0.0.1:5000
+flask-1  |  * Running on http://172.27.0.2:5000
+flask-1  | Press CTRL+C to quit
+flask-1  | 172.27.0.1 - - [14/Sep/2025 11:46:58] "GET / HTTP/1.1" 200 -
+flask-1  | 172.27.0.1 - - [14/Sep/2025 11:46:59] "GET /favicon.ico HTTP/1.1" 404 -
+flask-1  | 172.27.0.1 - - [14/Sep/2025 11:47:01] "GET / HTTP/1.1" 200 -
+flask-1  | 172.27.0.1 - - [14/Sep/2025 11:47:01] "GET / HTTP/1.1" 200 -
+Gracefully stopping... (press Ctrl+C again to force)
+[+] Stopping 1/1
+ ✔ Container task-b-flask-1  Stopped 
