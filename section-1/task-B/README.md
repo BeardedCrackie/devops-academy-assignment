@@ -31,3 +31,18 @@ source venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 ```
+
+# Starting the Flask App via venv
+
+After setting up the virtual environment and installing dependencies, you can start the Flask application with:
+
+```bash
+# Activate the virtual environment
+source venv/bin/activate
+
+# Run the Flask app
+flask run
+```
+
+By default, the app will be available at `http://127.0.0.1:5000/`. You can access it from your web browser.
+
