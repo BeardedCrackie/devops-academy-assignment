@@ -49,3 +49,34 @@
    - Ensure each CI agent or runner is configured to clean up files, containers, and caches after the job completes.
    - Implement post-job cleanup steps in your pipeline configuration to remove build artifacts and temporary files.
    - Use Ephemeral runners that start with a clean state and after pipeline runs destroy them.
+
+## Dockerfile Optimization Notes
+
+- **Use of Official Node.js Image:**  
+  Switched from `ubuntu:20.04` with manual Node.js installation to `node:20-slim`, reducing image size and build time.
+
+- **Selective File Copy:**  
+  Only `package*.json` files are copied first to leverage Docker layer caching, so dependencies are only reinstalled when they change.
+
+- **Efficient Dependency Installation:**  
+  Used `npm ci --only=production` for faster, reproducible, and production-focused installs.
+
+- **Reduced Build Context:**  
+  By using a `.dockerignore` file (recommended), unnecessary files are excluded from the build context, further reducing image size and disk usage.
+
+- **Optional: Use Multi-Stage Builds:**  
+  Multi-stage builds allow you to separate build dependencies from the final image, keeping the production image as small as possible.  
+  Example:
+  ```dockerfile
+  FROM node:20-slim AS builder
+  WORKDIR /app
+  COPY package*.json ./
+  RUN npm ci --only=production
+  COPY . .
+
+  FROM node:20-slim
+  WORKDIR /app
+  COPY --from=builder /app ./
+  CMD ["node", "index.js"]
+  ```
+  This approach ensures only the necessary files and production dependencies are included in the final image, further reducing size and potential disk

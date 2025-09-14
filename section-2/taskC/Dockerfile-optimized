@@ -1,0 +1,17 @@
+# Use official Node.js image based on slim Debian instead of full Ubuntu
+# FROM ubuntu:20.04
+FROM node:20-slim        
+
+#RUN apt-get update && apt-get install -y nodejs npm
+
+# Copy only needed files/packages to leverage Docker cache
+#COPY . /app
+COPY package*.json ./
+
+WORKDIR /app
+
+# Use npm ci for clean, reproducible builds
+#RUN npm install
+RUN npm ci --only=production
+
+CMD ["node", "index.js"]
