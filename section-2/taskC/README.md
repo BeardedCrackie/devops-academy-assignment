@@ -80,3 +80,4 @@
   CMD ["node", "index.js"]
   ```
   This approach ensures only the necessary files and production dependencies are included in the final image, further reducing size and potential disk
+  
