@@ -1,0 +1,6 @@
+...
+containers:
+- name: demo
+image: node:14
+command: ["node", "index.js"]
+...
