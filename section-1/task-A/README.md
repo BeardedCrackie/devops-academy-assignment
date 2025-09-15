@@ -63,6 +63,8 @@ terraform apply
 terraform destroy
 ```
 
+**Note**: Detailed logs from the resource creation process are available in the `cli.log` file in the terraform directory.
+
 ### Required Permissions
 
 Your AWS credentials need the following permissions:
@@ -77,4 +79,3 @@ Your AWS credentials need the following permissions:
 This project uses a modular approach:
 - `aws_vpc` module: Creates VPC, calculates subnet CIDRs, and orchestrates AZ networks
 - `aws_az_pub_priv_network` module: Creates public/private subnets, NAT gateway, and routing for a single AZ
-
