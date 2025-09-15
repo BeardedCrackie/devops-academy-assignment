@@ -9,5 +9,7 @@ terraform {
         bucket = "terraform-state-storage"
         key = "devopsacademy/infra.tfstate"
         region = "eu-west-1"
+        #dynamodb_table = "terraform-lock-table" #https://developer.hashicorp.com/terraform/language/backend/s3#state-locking
+        use_lockfile = true
     }
 }
