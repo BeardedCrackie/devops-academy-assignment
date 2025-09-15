@@ -28,7 +28,7 @@
 
 ### Local Kubernetes Setup with kind
 
-For testing the Helm chart, I used [microk8s](https://microk8s.io/) (The effortless Kubernetes by Canonical) to create a single node Kubernetes cluster.
+For testing the Helm chart, I used [microk8s](https://microk8s.io/) (The effortless Kubernetes by Canonical) to create a single node Kubernetes cluster. Cli outputs are provided within cli.log
 
 ### Deploying the Helm Chart
 
@@ -48,3 +48,6 @@ For testing the Helm chart, I used [microk8s](https://microk8s.io/) (The effortl
     kubectl get all
     kubectl get ingress
     ```
+
+4. **Test Ingress:**
+    - curl http://sample-nginx.local

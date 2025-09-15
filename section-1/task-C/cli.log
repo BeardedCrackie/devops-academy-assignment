@@ -1,0 +1,47 @@
+potociarm@NB1743:~/devops-academy-assignment/section-1/task-C/sample-nginx$ helm list
+NAME            NAMESPACE       REVISION        UPDATED                                         STATUS          CHART                   APP VERSION
+sample-nginx    default         1               2025-09-15 16:26:38.968214737 +0200 CEST        deployed        sample-nginx-0.1.0      1.16.0   
+
+potociarm@NB1743:~/devops-academy-assignment/section-1/task-C/sample-nginx$ kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+sample-nginx-679f6469f6-bzbgs   1/1     Running   0          74s
+
+potociarm@NB1743:~/devops-academy-assignment/section-1/task-C/sample-nginx$ kubectl get ingress
+NAME           CLASS    HOSTS                ADDRESS     PORTS   AGE
+sample-nginx   public   sample-nginx.local   127.0.0.1   80      119s
+
+potociarm@NB1743:~/devops-academy-assignment/section-1/task-C/sample-nginx$ helm install sample-nginx . 
+NAME: sample-nginx
+LAST DEPLOYED: Mon Sep 15 16:26:38 2025
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+  http://sample-nginx.local/
+
+potociarm@NB1743:~/devops-academy-assignment/section-1/task-C/sample-nginx$ curl http://sample-nginx.local/
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+
