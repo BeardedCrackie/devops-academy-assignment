@@ -1,6 +1,11 @@
 ...
 containers:
 - name: demo
-image: node:14
-command: ["node", "index.js"]
-...
+  image: node:14
+  command: ["node", "index.js"]
+  livenessProbe:
+    httpGet:
+      path: /
+      port: 3000
+    initialDelaySeconds: 5
+    periodSeconds: 10
