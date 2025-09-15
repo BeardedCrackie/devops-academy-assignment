@@ -5,3 +5,12 @@ resource "aws_vpc" "main" {
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.main.id
 }
+
+module "az_pub_priv_network" {
+  source              = "./modules/aws_az_pub_priv_network"
+  vpc_id              = aws_vpc.main.id
+  public_subnet_cidr  = "10.0.1.0/24"
+  private_subnet_cidr = "10.0.2.0/24"
+  az                  = "eu-central-1a"
+  igw_id              = aws_internet_gateway.gw.id
+}
