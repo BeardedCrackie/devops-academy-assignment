@@ -28,7 +28,7 @@
 
 ### Local Kubernetes Setup with kind
 
-For testing the Helm chart, I used [kind](https://kind.sigs.k8s.io/) (Kubernetes IN Docker) to create a local Kubernetes cluster.
+For testing the Helm chart, I used [microk8s](https://microk8s.io/) (The effortless Kubernetes by Canonical) to create a single node Kubernetes cluster.
 
 ### Deploying the Helm Chart
 
