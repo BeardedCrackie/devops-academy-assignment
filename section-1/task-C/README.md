@@ -23,3 +23,28 @@
 
 > Hpa and ServiceAccount are "advanced" resources 
 > but I will leave it as it was generated and focus on explanaition and demostration
+
+## Demonstration
+
+### Local Kubernetes Setup with kind
+
+For testing the Helm chart, I used [kind](https://kind.sigs.k8s.io/) (Kubernetes IN Docker) to create a local Kubernetes cluster.
+
+### Deploying the Helm Chart
+
+1. **Navigate to the chart directory:**
+    ```bash
+    cd sample-nginx
+    ```
+
+2. **Install the chart:**
+    ```bash
+    helm install sample-nginx . 
+    ```
+
+3. **Verify resources:**
+    ```bash
+    helm list
+    kubectl get all
+    kubectl get ingress
+    ```
